@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    image: api
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - /home/debian/public:/app/public
+
+  watchdog:
+    image: api
+    restart: unless-stopped
+    env_file: .env
+    command: node dist/watchdog.js
+    pid: host
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

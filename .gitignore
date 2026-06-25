@@ -1,0 +1,8 @@
+/node_modules
+.env
+tsconfig.json
+.dockerignore
+api.tar.gz
+package.json
+package-lock.json
+/dist

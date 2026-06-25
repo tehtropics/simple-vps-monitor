@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/style.css" />
+        <link rel="icon" href="dashboard.png" />
+    </head>
+    <body>
+        <div class="container dashboard" id="main-container">
+            <div class="chart-container">
+                <canvas id="cpu-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="mem-chart"></canvas>
+            </div>
+            <div id="history-container">
+                <h2>Downtime History</h2>
+                <div id="history-table-wrapper">
+                    <table id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Process</th>
+                                <th>Went Down</th>
+                                <th>Came Back</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="dashboard.js"></script>
+    </body>
+</html>
